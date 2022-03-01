@@ -25,5 +25,11 @@
         function create_data($nim,$nama,$email,$phone,$jk,$alamat,$status,$kelas){
             $create = mysqli_query($this->koneksi, "INSERT INTO siswa VALUES('','$nim','$nama','$email','$phone','$jk','$alamat','$status','$kelas')");
         }
+
+        //UPDATE DATA 
+        function update($id_siswa){
+            $query = mysqli_query($this->koneksi, "SELECT * FROM siswa WHERE id_siswa='$id_siswa'");
+            return $query->fetch_array();
+        }
     }
 ?>
