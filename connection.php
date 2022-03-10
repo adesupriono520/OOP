@@ -26,10 +26,21 @@
             $create = mysqli_query($this->koneksi, "INSERT INTO siswa VALUES('','$nim','$nama','$email','$phone','$jk','$alamat','$status','$kelas')");
         }
 
-        //UPDATE DATA 
+        //TAMPIL UPDATE DATA 
         function update($id_siswa){
             $query = mysqli_query($this->koneksi, "SELECT * FROM siswa WHERE id_siswa='$id_siswa'");
             return $query->fetch_array();
+        }
+
+        //UPDATE DATA
+        function update_data($nim,$nama,$email,$phone,$jk,$alamat,$status,$kelas,$id_siswa){
+            $query = mysqli_query($this->koneksi,"UPDATE siswa SET nim='$nim',nama_mahasiswa='$nama',email_mahasiswa='$email',no_hp_mahasiswa='$phone'
+                                  ,jk='$jk',alamat_mahasiswa='$alamat',status='$status',kelas='$kelas' where id_siswa='$id_siswa'");
+        }
+
+        // DELETE DATA
+        function delete($id_siswa){
+            $query = mysqli_query($this->koneksi,"DELETE FROM siswa WHERE id_siswa='$id_siswa'");
         }
     }
 ?>

@@ -28,11 +28,14 @@
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
-    <title>Create</title>
+    <title>Update</title>
 </head>
 <body>
     <div class="container"><br>
-        <form action="proses_create.php?action=add" method="POST">
+        <form action="proses_create.php?action=update" method="POST">
+            <div class="form-group">
+                <input type="hidden" class="form-control" id="id_siswa" name="id_siswa" value="<?php echo $data['id_siswa'];?>">
+            </div>
             <div class="form-group">
                 <label for="nim">NIM :</label>
                 <input type="number" class="form-control" id="nim" name="nim" value="<?php echo $data['nim'];?>">
@@ -51,8 +54,8 @@
             </div>
             <div class="form-group">
                 <label for="jk">Jenis Kelamin :</label><br>
-                <input type="radio" name="jk" value="Laki - Laki" <?php if($data['jk'] == 'Laki - Laki') echo 'checked'?>> Laki - Laki 
-                <input type="radio" name="jk" value="Perempuan"<?php if($data['jk'] == 'Perempuan') echo 'checked'?>> Perempuan
+                <input type="radio" id="jk" name="jk" value="Laki - Laki" <?php if($data['jk'] == 'Laki - Laki') echo 'checked'?>> Laki - Laki 
+                <input type="radio" id="jk" name="jk" value="Perempuan"<?php if($data['jk'] == 'Perempuan') echo 'checked'?>> Perempuan
             </div>
             <div class="form-group">
                 <label for="alamat">Alamat :</label>
@@ -60,10 +63,17 @@
             </div>
             <div class="form-group">
                 <label for="status">Status :</label>
-                <select name="status" id="status" class="form-control">
-                    <option value="ACTIVE"<?php if($data['status']=="ACTIVE") echo'checked'?>></option>
-                    <option value="NO ACTIVE"<?php if($data['status']=="NO ACTIVE") echo'checked'?>></option>
-                </select>
+                    <?php
+                        echo"<select name='status' id='status' class='form-control'>";
+                            if($data['status'] == 'Active'){
+                                echo"<option value='Active' selected>Active</option>
+                                    <option value='No Active'>No Active</option>";
+                            }else{
+                                echo"<option value='Active'>Active</option>
+                                    <option value='No Active' selected>No Active</option>";
+                            }
+                        echo"</select>";
+                    ?>
             </div>
             <div class="form-group">
                 <label for="kelas">Kelas :</label>

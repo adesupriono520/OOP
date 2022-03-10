@@ -45,7 +45,7 @@
                 <td><?php echo $data['status'] ?></td>
                 <td>
 					<a href="edit.php?id=<?php echo $data['id_siswa']; ?>">Update</a>
-					<a href="hapus.php?id=<?php echo $row['id_siswa']; ?>">Delete</a>
+					<a href="proses_create.php?action=delete&id=<?php echo $data['id_siswa']; ?>">Delete</a>
 				</td>
             </tr>
         </tbody>
